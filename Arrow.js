@@ -56,3 +56,30 @@ function Arrow(x, y, w, h) {
     this.y = y;
   }
 }
+
+//**************************************************************
+//*************************************************************
+//Add the code below into the draw() function
+
+ for (i = 0; i < arrows.length; i++) {
+    arrows[i].display(t);
+    if (shootArrow) {
+      arrows[activeArrow].shoot(t);
+    }
+    if (arrows[i].inTarget) {
+      hits += 1;
+      if (hits > 2) {
+        haveNotHitTheShot = false;
+        walls = [];
+        makeWallsRoomFive("pink");
+        t.show = false;
+        b.show = false;
+        k.show = true;
+        for (i = 0; i < 3; i++) {
+          arrows[i].show = false;
+        }
+      }
+    }
+  }
+  hits = 0;
+
